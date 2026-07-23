@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
 const app = express();
 const PORT = 3000;
-const SECRET_KEY = "super_secret_key_that_should_not_be_here";
+const SECRET_KEY = process.env.SECRET || "super_secret_key_that_should_not_be_here";
 
 app.use(cors());
 app.use(bodyParser.json());

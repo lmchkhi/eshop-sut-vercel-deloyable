@@ -1,14 +1,19 @@
-const sqlite3 = require('sqlite3').verbose();
+// const sqlite3 = require('sqlite3').verbose();
+const libsql = require('@libsql/client')
 const path = require('path');
 
 const dbPath = path.resolve(__dirname, 'database.sqlite');
-const db = new sqlite3.Database(dbPath, (err) => {
-    if (err) {
-        console.error('Could not connect to database', err);
-    } else {
-        console.log('Connected to database');
-    }
+const db =  libsql.createClient({
+  url: process.env.TURSO_DATABASE_URL,
+  authToken: process.env.TURSO_AUTH_TOKEN,
 });
+// new sqlite3.Database(dbPath, (err) => {
+//     if (err) {
+//         console.error('Could not connect to database', err);
+//     } else {
+//         console.log('Connected to database');
+//     }
+// });
 
 function initDatabase() {
     db.serialize(() => {
