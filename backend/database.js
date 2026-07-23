@@ -4,8 +4,8 @@ const path = require('path');
 
 const dbPath = path.resolve(__dirname, 'database.sqlite');
 const db =  libsql.createClient({
-  url: process.env.TURSO_DATABASE_URL,
-  authToken: process.env.TURSO_AUTH_TOKEN,
+  url: process.env.STORAGE_TURSO_DATABASE_URL,
+  authToken: process.env.STORAGE_TURSO_AUTH_TOKEN,
 });
 // new sqlite3.Database(dbPath, (err) => {
 //     if (err) {
